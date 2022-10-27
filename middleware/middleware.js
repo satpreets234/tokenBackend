@@ -52,7 +52,7 @@ const tokenDetailsValidate=async(req,res,next)=>{
         if(!error){
             req.body.network=='Mainnet'?req.body.commissionFee='0.075ETH'
             :req.body.network=='Binance Smart Chain'?req.body.commissionFee='0.5BNB'
-            :req.body.network=='Polygon Mainnet'?req.body.commissionFee='150MATIC':'Free'
+            :req.body.network=='Polygon Mainnet'?req.body.commissionFee='150MATIC':req.body.commissionFee='Free'
             next();
         }else{
             res.send(error);
