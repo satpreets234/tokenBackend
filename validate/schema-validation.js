@@ -13,8 +13,8 @@ const tokenSchema=Joi.object({
     tokenSymbol:Joi.string().required()
     ,decimals: Joi.number().when('tokenType',{is:"free",then:Joi.number().valid(18)}).when('tokenType',
     {is:'basic',then:Joi.number().valid(18)}).when('tokenType',{is:'custom',then:Joi.number().required()})
-    ,supplyType:Joi.string().when('tokenType',{is:"free",then:Joi.string().valid('Fixed')}).when('tokenType',
-    {is:'basic',then:Joi.string().valid('Fixed')}).when('tokenType',{is:'custom',then:Joi.string().valid('Fixed','Capped','Unlimited').required()}),
+    ,supplyType:Joi.string().when('tokenType',{is:"free",then:Joi.string().valid('fixed')}).when('tokenType',
+    {is:'basic',then:Joi.string().valid('fixed')}).when('tokenType',{is:'custom',then:Joi.string().valid('fixed','capped','unlimited').required()}),
     initialSupply:Joi.number().required(),maximumSupply:Joi.number().required(),
     accessType:Joi.string().when('tokenType',{is:"free",then:Joi.string().valid('owner')}).when('tokenType',
     {is:'basic',then:Joi.string().valid('owner')}).when('tokenType',{is:'custom',then:Joi.string().valid('owner','roles').required()}),
