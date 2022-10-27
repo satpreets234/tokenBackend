@@ -9,15 +9,15 @@ const userSchema=Joi.object({
 
 const tokenSchema=Joi.object({
     tokenName:Joi.string().required(),
-    tokenType:Joi.string().valid('Free',"Custom","Basic").required(),
+    tokenType:Joi.string().valid('free',"custom","basic").required(),
     tokenSymbol:Joi.string().required()
-    ,decimals: Joi.number().when('tokenType',{is:"Free",then:Joi.number().valid(18)}).when('tokenType',
-    {is:'Basic',then:Joi.number().valid(18)}).when('tokenType',{is:'Custom',then:Joi.number().required()})
-    ,supplyType:Joi.string().when('tokenType',{is:"Free",then:Joi.string().valid('Fixed')}).when('tokenType',
-    {is:'Basic',then:Joi.string().valid('Fixed')}).when('tokenType',{is:'Custom',then:Joi.string().valid('Fixed','Capped','Unlimited').required()}),
+    ,decimals: Joi.number().when('tokenType',{is:"free",then:Joi.number().valid(18)}).when('tokenType',
+    {is:'basic',then:Joi.number().valid(18)}).when('tokenType',{is:'custom',then:Joi.number().required()})
+    ,supplyType:Joi.string().when('tokenType',{is:"free",then:Joi.string().valid('Fixed')}).when('tokenType',
+    {is:'basic',then:Joi.string().valid('Fixed')}).when('tokenType',{is:'custom',then:Joi.string().valid('Fixed','Capped','Unlimited').required()}),
     initialSupply:Joi.number().required(),maximumSupply:Joi.number().required(),
-    accessType:Joi.string().when('tokenType',{is:"Free",then:Joi.string().valid('Owner')}).when('tokenType',
-    {is:'Basic',then:Joi.string().valid('Owner')}).when('tokenType',{is:'Custom',then:Joi.string().valid('Owner','Roles').required()}),
+    accessType:Joi.string().when('tokenType',{is:"free",then:Joi.string().valid('owner')}).when('tokenType',
+    {is:'basic',then:Joi.string().valid('owner')}).when('tokenType',{is:'custom',then:Joi.string().valid('owner','roles').required()}),
     network:Joi.number().valid(1,5,4,137,80001,97,56),
     commissionFee:Joi.string().when('network',{is:1,then:Joi.string().valid('0.075ETH')})
     .when('network',{is:97,then:Joi.string().valid('0.5BNB')})

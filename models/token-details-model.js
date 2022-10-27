@@ -6,7 +6,7 @@ const tokenDetails = new mongoose.Schema({
         },
         tokenType: {
             type: String,
-            enum: ["Basic", "Custom", "Free"]
+            enum: ["basic", "custom", "free"]
             , required: true
         },
         tokenSymbol: {
@@ -19,8 +19,8 @@ const tokenDetails = new mongoose.Schema({
         },
         supplyType: {
             type: String,
-            enum: ['Fixed', "Capped", "Unlimited"],
-            default: 'Fixed'
+            enum: ['fixed', "capped", "unlimited"],
+            default: 'fixed'
         },
         initialSupply: {
             type: Number,
@@ -32,8 +32,8 @@ const tokenDetails = new mongoose.Schema({
         },
         accessType: {
             type: String,
-            enum: ['Owner', "Roles"],
-            default: 'Owner'
+            enum: ['owner', "roles"],
+            default: 'owner'
         },
         network: {
             type: Number,
