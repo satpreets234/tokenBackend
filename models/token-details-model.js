@@ -36,9 +36,8 @@ const tokenDetails = new mongoose.Schema({
             default: 'Owner'
         },
         network: {
-            type: String,
-            enum: ['Gorli','Mainnet',"Rinkeby",'Binance Smart Chain',
-            "Binance Smart Chain Testnet",'Polygon Mainnet','Polygon Mumbai']
+            type: Number,
+            enum: [1,5,4,137,80001,97,56]
         },
         commissionFee: {
             type: String,

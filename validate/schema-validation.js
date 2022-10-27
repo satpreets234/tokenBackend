@@ -18,10 +18,10 @@ const tokenSchema=Joi.object({
     initialSupply:Joi.number().required(),maximumSupply:Joi.number().required(),
     accessType:Joi.string().when('tokenType',{is:"Free",then:Joi.string().valid('Owner')}).when('tokenType',
     {is:'Basic',then:Joi.string().valid('Owner')}).when('tokenType',{is:'Custom',then:Joi.string().valid('Owner','Roles').required()}),
-    network:Joi.string().valid('Gorli', 'Mainnet', "Rinkeby", 'Binance Smart Chain', "Binance Smart Chain Testnet", 'Polygon Mainnet', 'Polygon Mumbai'),
-    commissionFee:Joi.string().when('network',{is:"Mainnet",then:Joi.string().valid('0.075ETH')})
-    .when('network',{is:"Binance Smart Chain",then:Joi.string().valid('0.5BNB')})
-    .when('network',{is:"Polygon Mainnet",then:Joi.string().valid('150 MATIC')})
+    network:Joi.number().valid(1,5,4,137,80001,97,56),
+    commissionFee:Joi.string().when('network',{is:1,then:Joi.string().valid('0.075ETH')})
+    .when('network',{is:97,then:Joi.string().valid('0.5BNB')})
+    .when('network',{is:137,then:Joi.string().valid('150 MATIC')})
 })
 
 module.exports={userSchema,tokenSchema};
