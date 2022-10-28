@@ -23,4 +23,20 @@ async function tokenDetails(req, res) {
     }
 }
 
-module.exports={tokenDetails};
+async function allTokens(req,res){
+    try {
+        const tokens=await tokenDetail.find({},{projection:{
+                tokenName: 1,
+                tokenSymbol: 1,
+                supplyType: 1,
+                initialSupply: 1,
+                maximumSupply: 1,
+                network: 1,
+                commissionFee:1
+        }})
+        console.log(tokens);
+    } catch (error) {
+        sendResponse(res, 0, 500, error);
+    }
+}
+module.exports={tokenDetails,allTokens};
