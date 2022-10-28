@@ -1,6 +1,6 @@
 const express=require('express');
 const router=express.Router();
-const{tokenDetails}=require('../controllers/user-controllers');
+const{tokenDetails}=require('../controllers/token-controller');
 const {tokenDetailsValidate}=require('../middleware/middleware');
 
 router.post('/tokendetails',tokenDetailsValidate,tokenDetails);
