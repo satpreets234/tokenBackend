@@ -15,9 +15,7 @@ app.use(function(req, res, next) {
     );
     next();
   });
-app.use(cors({
-    origin: '*'
-}))
+app.use(cors())
 const dotenv=require('dotenv');
 dotenv.config();
 const connect=require('./connection/connection');
